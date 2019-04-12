@@ -1,7 +1,7 @@
 library("tidyverse")
 library("ggplot2")
 
-Quant_Master <- read_csv("2019 IgG Quantitation.csv")
+Quant_Master <- read_csv("../2019 IgG Quantitation.csv")
 view(Quant_Master)
 
 Quant_NoBlnk <- Quant_Master %>% 
@@ -29,10 +29,11 @@ Avg_Ctx <- Data_Ctx %>%
   summarise(Mean_Ctx = mean(Measurement))
 head(Avg_Ctx)
 
+count(Quant_NoBlnk, is.na(Image))
+
 write_csv(Avg_Hippo,path = "./Avg_Hippo.csv")
 write_csv(Avg_Ctx,path = "./Avg_Ctx.csv")
 
 library(hexbin)
 
 ggplot(data = Quant_NoBlnk,mapping = aes(x = Mouse, y = Image)) + geom_point(alpha = 0.3,colour="blue")
-count(Quant_NoBlnk, is.na(Image))
