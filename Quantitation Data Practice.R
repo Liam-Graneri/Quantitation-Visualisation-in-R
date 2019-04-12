@@ -33,3 +33,6 @@ write_csv(Avg_Hippo,path = "./Avg_Hippo.csv")
 write_csv(Avg_Ctx,path = "./Avg_Ctx.csv")
 
 library(hexbin)
+
+ggplot(data = Quant_NoBlnk,mapping = aes(x = Mouse, y = Image)) + geom_point(alpha = 0.3,colour="blue")
+count(Quant_NoBlnk, is.na(Image))
